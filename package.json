@@ -1,6 +1,6 @@
 {
   "name": "binding-js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Data binding modules.",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/audinue/binding-js/issues"
   },
-  "homepage": "https://github.com/audinue/binding-js#readme"
+  "homepage": "https://github.com/audinue/binding-js#readme",
+  "devDependencies": {
+    "observable-js": "^0.3.0"
+  }
 }
