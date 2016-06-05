@@ -10,9 +10,14 @@ PathObserver.prototype = {
   observe: function (object) {
     var callback = this.callback
     var parts = this.path.split('.')
+    var initialize = true
     var keyObserver = new KeyObserver(parts.pop(), {
-      observe: function () {
-        callback()
+      observe: function (object) {
+        if (initialize) {
+          initialize = false
+          return
+        }
+        callback(object)
       }
     })
     while (parts.length) {

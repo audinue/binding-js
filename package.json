@@ -4,7 +4,7 @@
   "description": "Data binding modules.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "webpack ./test/test2.js test/bundle.js --watch"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/audinue/binding-js#readme",
   "devDependencies": {
-    "observable-js": "^0.3.0"
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "fastdom-js": "^0.1.0",
+    "observable-js": "^0.3.0",
+    "utility-js": "^0.1.0"
   }
 }
