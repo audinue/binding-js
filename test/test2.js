@@ -19,21 +19,22 @@ document.querySelector('input').oninput = function () {
   o.prop('name', this.value)
 }
 
-// bind(o, document.body, {
-  // 'div': {
-    // style: {
-      // left: 'x+"px"',
-      // top: 'y+"px"',
-    // }
-  // }
-// })
+bind(o, document.body, {
+  'div': {
+    style: {
+      left: 'x + 10 + "px"',
+      top: 'y + 10 + "px"',
+    },
+    if: 'name'
+  }
+})
 
-// document.onmousemove = function(e) {
-  // o.prop({
-    // x: e.pageX,
-    // y: e.pageY,
-  // })
-// }
+document.onmousemove = function(e) {
+  o.prop({
+    x: e.pageX,
+    y: e.pageY,
+  })
+}
 
 o.prop('fruits', convert([
   {name: 'Apple'},

@@ -2,7 +2,7 @@
   "name": "binding-js",
   "version": "0.2.0",
   "description": "Data binding modules.",
-  "main": "index.js",
+  "main": "src/binding.js",
   "scripts": {
     "test": "webpack ./test/test2.js test/bundle.js --watch"
   },

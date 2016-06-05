@@ -65,21 +65,22 @@
 	  o.prop('name', this.value)
 	}
 
-	// bind(o, document.body, {
-	  // 'div': {
-	    // style: {
-	      // left: 'x+"px"',
-	      // top: 'y+"px"',
-	    // }
-	  // }
-	// })
+	bind(o, document.body, {
+	  'div': {
+	    style: {
+	      left: 'x + 10 + "px"',
+	      top: 'y + 10 + "px"',
+	    },
+	    if: 'name'
+	  }
+	})
 
-	// document.onmousemove = function(e) {
-	  // o.prop({
-	    // x: e.pageX,
-	    // y: e.pageY,
-	  // })
-	// }
+	document.onmousemove = function(e) {
+	  o.prop({
+	    x: e.pageX,
+	    y: e.pageY,
+	  })
+	}
 
 	o.prop('fruits', convert([
 	  {name: 'Apple'},
@@ -114,7 +115,7 @@
 	
 	var Scope = __webpack_require__(2)
 	var forEach = __webpack_require__(6).forEach
-	var mutate = __webpack_require__(13).mutate
+	var mutate = __webpack_require__(7).mutate
 
 	var registered = {
 	  text: function (element) {
@@ -125,6 +126,11 @@
 	  html: function (element) {
 	    return function (value) {
 	      element.innerHTML = value
+	    }
+	  },
+	  value: function (element) {
+	    return function (value) {
+	      element.value = value
 	    }
 	  },
 	  prop: function (element, key) {
@@ -493,7 +499,36 @@
 
 
 /***/ },
-/* 7 */,
+/* 7 */
+/***/ function(module, exports) {
+
+	
+	var measurements = []
+	var mutations = []
+
+	function update () {
+	  var callback
+	  while ((callback = measurements.shift())) {
+	    callback()
+	  }
+	  while ((callback = mutations.shift())) {
+	    callback()
+	  }
+	  window.requestAnimationFrame(update)
+	}
+
+	window.requestAnimationFrame(update)
+
+	exports.measure = function (callback) {
+	  measurements.push(callback)
+	}
+
+	exports.mutate = function (callback) {
+	  mutations.push(callback)
+	}
+
+
+/***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -705,36 +740,6 @@
 	}
 
 	module.exports = convert
-
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	
-	var measurements = []
-	var mutations = []
-
-	function update () {
-	  var callback
-	  while ((callback = measurements.shift())) {
-	    callback()
-	  }
-	  while ((callback = mutations.shift())) {
-	    callback()
-	  }
-	  window.requestAnimationFrame(update)
-	}
-
-	window.requestAnimationFrame(update)
-
-	exports.measure = function (callback) {
-	  measurements.push(callback)
-	}
-
-	exports.mutate = function (callback) {
-	  mutations.push(callback)
-	}
 
 
 /***/ }
