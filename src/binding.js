@@ -14,6 +14,11 @@ var registered = {
       element.innerHTML = value
     }
   },
+  value: function (element) {
+    return function (value) {
+      element.value = value
+    }
+  },
   prop: function (element, key) {
     return function (value) {
       element[key] = value
