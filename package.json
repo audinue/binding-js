@@ -1,6 +1,6 @@
 {
   "name": "binding-js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Data binding modules.",
   "main": "src/binding.js",
   "scripts": {
